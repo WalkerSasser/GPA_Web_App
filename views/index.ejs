@@ -1,0 +1,52 @@
+<%- include("partials/header") %> 
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>GPA Tracker</h1>
+            <p>Made simple and easy on the eyes (also not full of ads).</p>
+            <p>
+                <a class="btn btn-primary btn-large" href="/semesters/new">Add new semester</a>
+            </p>
+        </div>
+    </header>
+  </div>
+        <!-- view all semesters -->
+        <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+            <% semesters.forEach(function(semester){ %>
+                <div class="" align="center">
+                    <div class="thumbnail">
+                        <h3><%=semester.year%></h3>
+                        <div class="caption">
+                            <h4><%=semester.season %></h4>
+                            
+                        </div>
+                        <div class="caption">
+                            <table align="center">
+                                <tr>
+                                    <th>Course    </th>
+                                    <th>Grade     </th>
+                                    <th>Hours</th>
+                                </tr>
+                            <% for (var i = 0; i < semester.classes.length; i++){ %>
+                                    <div>
+                                        <tr>
+                                            <td><%= semester.classes[i]["name"] %>  </td>
+                                            <td><%= semester.classes[i]["grade"] %> </td>
+                                            <td><%= semester.classes[i]["hours"] %> </td>
+                                        </tr>
+                                    </div>
+                            <% } %> 
+                                </table>
+                        </div>
+                        <p >
+                            <a href="/semesters/<%= semester._id %>" class="btn btn-primary">Edit</a>
+                        </p>
+                    </div>
+                </div>
+            <%});%>
+        </div>
+
+
+<%- include("partials/footer") %> 
+
